@@ -3,15 +3,17 @@
 
 ----------------------------
 ## 生命周期
-### 3对方法
+### 1.三对方法
 - onCreate和onDestroy，标识activity的创建和销毁
 - onStart和onStop，标识屏幕的点亮和熄灭或用户操作(是否可见)
 - onResume和onPause，标识屏幕的点亮和熄灭或用户操作(是否位于前台)
 
-### 不能在onPause中执行重量级操作
+### 2.不能在onPause中执行重量级操作
 因为在activity跳转中，只有第一个activity执行onPause后，第二个activity才会执行onCreate-onStart-onResume，然后第一个activity执行onStop.
 
-### 重写onSaveInstanceState方法
+### 3.重写onSaveInstanceState方法
 通过bundle来保存数据
+
+### 4.
 
 
