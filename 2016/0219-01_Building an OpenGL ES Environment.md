@@ -1,0 +1,8 @@
+#第一章 重构，第一个案例
+##Extract Method提炼函数
+改变参数名-让人容易理解
+##Move Method
+函数应该放在它所使用的数据的所属对象内
+##Replace Temp With Query
+尽量少用临时变量
+
