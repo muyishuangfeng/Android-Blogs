@@ -32,12 +32,12 @@ This lesson explains how to complete a minimal implementation of GLSurfaceView a
 
 In order for your application to use the OpenGL ES 2.0 API, you must add the following declaration to your manifest:
 
-`<uses-feature android:glEsVersion="0x00020000" android:required="true" />`
+    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
 
 If your application uses texture compression, you must also declare which compression formats your app supports, so that it is only installed on compatible devices.
 
-`<supports-gl-texture android:name="GL_OES_compressed_ETC1_RGB8_texture" />
-<supports-gl-texture android:name="GL_OES_compressed_paletted_texture" />`
+    <supports-gl-texture android:name="GL_OES_compressed_ETC1_RGB8_texture" />
+    <supports-gl-texture android:name="GL_OES_compressed_paletted_texture" />
 
 For more information about texture compression formats, see the OpenGL developer guide.
 
@@ -47,7 +47,7 @@ Android applications that use OpenGL ES have activities just like any other appl
 
 The following code example shows a minimal implementation of an activity that uses a GLSurfaceView as its primary view:
 
-`public class OpenGLES20Activity extends Activity {
+    public class OpenGLES20Activity extends Activity {
 
     private GLSurfaceView mGLView;
 
@@ -60,7 +60,7 @@ The following code example shows a minimal implementation of an activity that us
         mGLView = new MyGLSurfaceView(this);
         setContentView(mGLView);
     }
-}`
+    }
 
 >Note: OpenGL ES 2.0 requires Android 2.2 (API Level 8) or higher, so make sure your Android project targets that API or higher.
 
@@ -70,7 +70,7 @@ A GLSurfaceView is a specialized view where you can draw OpenGL ES graphics. It 
 
 The essential code for a GLSurfaceView is minimal, so for a quick implementation, it is common to just create an inner class in the activity that uses it:
 
-`class MyGLSurfaceView extends GLSurfaceView {
+    class MyGLSurfaceView extends GLSurfaceView {
 
     private final MyGLRenderer mRenderer;
 
@@ -85,12 +85,12 @@ The essential code for a GLSurfaceView is minimal, so for a quick implementation
         // Set the Renderer for drawing on the GLSurfaceView
         setRenderer(mRenderer);
     }
-}`
+    }
 
 One other optional addition to your GLSurfaceView implementation is to set the render mode to only draw the view when there is a change to your drawing data using the GLSurfaceView.RENDERMODE_WHEN_DIRTY setting:
 
-`// Render the view only when there is a change in the drawing data
-setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);`
+    // Render the view only when there is a change in the drawing data
+    setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
 
 This setting prevents the GLSurfaceView frame from being redrawn until you call requestRender(), which is more efficient for this sample app.
 
@@ -106,7 +106,7 @@ The implementation of the GLSurfaceView.Renderer class, or renderer, within an a
 
 Here is a very basic implementation of an OpenGL ES renderer, that does nothing more than draw a black background in the GLSurfaceView:
 
-`public class MyGLRenderer implements GLSurfaceView.Renderer {
+    public class MyGLRenderer implements GLSurfaceView.Renderer {
 
     public void onSurfaceCreated(GL10 unused, EGLConfig config) {
         // Set the background frame color
@@ -121,7 +121,7 @@ Here is a very basic implementation of an OpenGL ES renderer, that does nothing 
     public void onSurfaceChanged(GL10 unused, int width, int height) {
         GLES20.glViewport(0, 0, width, height);
     }
-}`
+    }
 
 That’s all there is to it! The code examples above create a simple Android application that displays a black screen using OpenGL. While this code does not do anything very interesting, by creating these classes, you have laid the foundation you need to start drawing graphic elements with OpenGL.
 
